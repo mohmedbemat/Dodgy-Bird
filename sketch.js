@@ -3,6 +3,12 @@ let yPos = 225;
 let birdX = 200;
 let birdY = 200;
 
+function preLoad(){
+
+
+    
+}
+
 function setup() {
     createCanvas(500, 500);
     background(0);
