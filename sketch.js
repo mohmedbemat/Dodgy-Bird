@@ -1,5 +1,7 @@
 let state = 1;
 let yPos = 225;
+let birdX = 200;
+let birdY = 200;
 
 function setup() {
     createCanvas(500, 500);
@@ -16,6 +18,11 @@ function draw() {
         clear();
         background(0, 0, 100, 100);
         state = 3;
+        fill(255, 255, 0);
+        ellipse(birdX, birdY, 50, 50);
+        triangle(birdX - 25, birdY, birdX, birdY - 25, birdX, birdY + 25);
+        arc(birdX + 25, birdY, 25, 0, 50, 50);
+  }
     }
     if (state == 3) {
         background(0, 0, 100, 100);
