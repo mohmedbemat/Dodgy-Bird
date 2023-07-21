@@ -34,6 +34,11 @@ function draw() {
             yPos += 3;
         }
     }
+    if (state == 4) {
+        rect(150, 200, 200, 100);
+        textSize(25);
+        text("Game Over", 190, 260);
+    }
 }
 
 function mouseClicked() {
