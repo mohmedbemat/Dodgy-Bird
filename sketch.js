@@ -1,4 +1,5 @@
 let state = 1;
+let yPos = 225;
 
 function setup() {
     createCanvas(500, 500);
@@ -17,7 +18,14 @@ function draw() {
         state = 3;
     }
     if (state == 3) {
-        
+        background(0, 0, 100, 100);
+        square(10, yPos, 50);
+        if (keyIsDown(UP_ARROW)) {
+            yPos -= 3;
+        }
+        if (keyIsDown(DOWN_ARROW)) {
+            yPos += 3;
+        }
     }
 }
 
