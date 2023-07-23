@@ -4,7 +4,7 @@ let xEnemy = 400;
 let yEnemy = 250;
 let bird;
 let enemy;
-let count == 0;
+let count = 0;
 
 function preload() {
     bird = loadImage("Sprites/697x634.png");
