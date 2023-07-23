@@ -4,7 +4,7 @@ let xEnemy = 400;
 let yEnemy = 250;
 let bird;
 let enemy;
-let count = 0;
+let enemySpeed = 5;
 
 function preload() {
     bird = loadImage("Sprites/697x634.png");
@@ -14,6 +14,7 @@ function preload() {
 function setup() {
     createCanvas(500, 500);
     background(0);
+    imageMode(CORNER);
 }
 
 function draw() {
@@ -37,27 +38,31 @@ function draw() {
             yPos += 3;
         }
         image(enemy, xEnemy, yEnemy, 100, 100);
-        xEnemy -= 3;
-        top = yPos;
-        bottom = yPos + 50;
-        left = 10;
-        right = 6;
-        enemyTop = yEnemy;
-        enemyBottom = yEnemy - 100;
-        enemyLeft = xEnemy;
-        enemyRight = xEnemy + 100;
+        xEnemy -= enemySpeed;
+        let top = yPos;
+        let bottom = yPos + 50;
+        let left = 6;
+        let right = 10;
+        let enemyTop = yEnemy;
+        let enemyBottom = yEnemy + 100;
+        let enemyLeft = xEnemy;
+        let enemyRight = xEnemy + 100;
         if(xEnemy < -100) {
-            yEnemy = random(0, 400);
             xEnemy = 500;
+            yEnemy = random(0, 400);
+            enemySpeed = random(5, 10);
         }
         if(left > enemyRight || right < enemyLeft || top > enemyBottom || bottom < enemyTop) {
 
         }
         else {
             state = 4;
-            clear();
         }
         if (state == 4) {
+            rect(150, 200, 200, 100);
+            textSize(25);
+            text("Game Over", 190, 260);
+
 
         }
     }
