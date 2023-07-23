@@ -1,12 +1,13 @@
 let state = 1;
 let yPos = 225;
-let birdX = 200;
-let birdY = 200;
+let xEnemy = 400;
+let yEnemy = 250;
+let bird;
+let enemy;
 
-function preLoad(){
-
-
-    
+function preload() {
+    bird = loadImage("Sprites/697x634.png");
+    enemy = loadImage("Sprites/bullet.png");
 }
 
 function setup() {
@@ -24,26 +25,40 @@ function draw() {
         clear();
         background(0, 0, 100, 100);
         state = 3;
-        fill(255, 255, 0);
-        ellipse(birdX, birdY, 50, 50);
-        triangle(birdX - 25, birdY, birdX, birdY - 25, birdX, birdY + 25);
-        arc(birdX + 25, birdY, 25, 0, 50, 50);
-  }
     }
     if (state == 3) {
         background(0, 0, 100, 100);
-        square(10, yPos, 50);
+        image(bird, 10, yPos, 50, 50);
         if (keyIsDown(UP_ARROW)) {
             yPos -= 3;
         }
         if (keyIsDown(DOWN_ARROW)) {
             yPos += 3;
         }
-    }
-    if (state == 4) {
-        rect(150, 200, 200, 100);
-        textSize(25);
-        text("Game Over", 190, 260);
+        image(enemy, xEnemy, yEnemy, 100, 100);
+        xEnemy -= 3;
+        top = yPos;
+        bottom = yPos + 50;
+        left = 10;
+        right = 6;
+        enemyTop = yEnemy;
+        enemyBottom = yEnemy - 100;
+        enemyLeft = xEnemy;
+        enemyRight = xEnemy + 100;
+        if(xEnemy < -100) {
+            yEnemy = random(0, 400);
+            xEnemy = 500;
+        }
+        if(left > enemyRight || right < enemyLeft || top > enemyBottom || bottom < enemyTop) {
+
+        }
+        else {
+            state = 4;
+            clear();
+        }
+        if (state == 4) {
+
+        }
     }
 }
 
