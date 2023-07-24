@@ -1,7 +1,7 @@
 let state = 1;
 let yPos = 225;
 let xEnemy = 400;
-let yEnemy = 250;
+let yEnemy = 200;
 let bird;
 let enemy;
 let enemySpeed = 5;
@@ -51,6 +51,12 @@ function draw() {
             xEnemy = 500;
             yEnemy = random(0, 400);
             enemySpeed = random(5, 10);
+        }
+        if (yPos < 0) {
+            yPos += 3
+        } 
+        if (yPos > 450) {
+            yPos -= 3
         }
         if(left > enemyRight || right < enemyLeft || top > enemyBottom || bottom < enemyTop) {
 
