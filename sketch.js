@@ -1,10 +1,10 @@
 let state = 1;
 let yPos = 225;
 let xEnemy = 400;
-let yEnemy = 200;
+let yEnemy = 250;
 let bird;
 let enemy;
-let enemySpeed = 5;
+let count = 0;
 
 function preload() {
     bird = loadImage("Sprites/697x634.png");
@@ -14,7 +14,6 @@ function preload() {
 function setup() {
     createCanvas(500, 500);
     background(0);
-    imageMode(CORNER);
 }
 
 function draw() {
@@ -29,6 +28,12 @@ function draw() {
         state = 3;
     }
     if (state == 3) {
+        
+        rect(50, 100, 100, 50);
+        textSize(25);
+        text(count, 190, 360);
+        
+        
         background(0, 0, 100, 100);
         image(bird, 10, yPos, 50, 50);
         if (keyIsDown(UP_ARROW)) {
@@ -38,37 +43,33 @@ function draw() {
             yPos += 3;
         }
         image(enemy, xEnemy, yEnemy, 100, 100);
-        xEnemy -= enemySpeed;
-        let top = yPos;
-        let bottom = yPos + 50;
-        let left = 6;
-        let right = 10;
-        let enemyTop = yEnemy;
-        let enemyBottom = yEnemy + 100;
-        let enemyLeft = xEnemy;
-        let enemyRight = xEnemy + 100;
+        xEnemy -= 3;
+        top = yPos;
+        bottom = yPos + 50;
+        left = 10;
+        right = 6;
+        enemyTop = yEnemy;
+        enemyBottom = yEnemy - 100;
+        enemyLeft = xEnemy;
+        enemyRight = xEnemy + 100;
         if(xEnemy < -100) {
-            xEnemy = 500;
             yEnemy = random(0, 400);
-            enemySpeed = random(5, 10);
-        }
-        if (yPos < 0) {
-            yPos += 3
-        } 
-        if (yPos > 450) {
-            yPos -= 3
+            xEnemy = 500;
         }
         if(left > enemyRight || right < enemyLeft || top > enemyBottom || bottom < enemyTop) {
+            
+        }
+
+        else if(left >= enemyRight || right >= enemyLeft || top != enemyBottom || bottom != enemyTop){
+            count += 1
 
         }
+
         else {
             state = 4;
+            clear();
         }
         if (state == 4) {
-            rect(150, 200, 200, 100);
-            textSize(25);
-            text("Game Over", 190, 260);
-
 
         }
     }
